@@ -1,10 +1,1 @@
-{:itonami.blueprint/id "cloud-itonami-isco-4224"
- :itonami.blueprint/name "Independent Hotel Reception Practice"
- :itonami.blueprint/isco-08 "4224"
- :itonami.blueprint/domain :services/hotel-reception
- :itonami.blueprint/license "AGPL-3.0-or-later"
- :itonami.blueprint/social-impact [:local-jobs :customer-access :small-business-support]
- :itonami.blueprint/governor :hotel-reception-governor
- :itonami.blueprint/robotics true
- :itonami.blueprint/required-technologies [:robotics :forms :identity :audit-ledger :bpmn]
- :itonami.blueprint/status :public-oss}
+[{:itonami.blueprint/social-impact [:local-jobs :customer-access :small-business-support], :itonami.blueprint/domain :services/hotel-reception, :itonami.blueprint/required-technologies [:robotics :forms :identity :audit-ledger :bpmn], :itonami.blueprint/isco-08 "4224", :itonami.blueprint/name "Independent Hotel Reception Practice", :itonami.blueprint/governor :hotel-reception-governor, :itonami.blueprint/robotics true, :db/id -1, :itonami.blueprint/status :public-oss, :itonami.blueprint/id "cloud-itonami-isco-4224", :itonami.blueprint/license "AGPL-3.0-or-later"}]
