@@ -62,17 +62,17 @@ human-in-the-loop interrupt/resume via checkpointing.
                                            +-> :hold               (:hard? true)
 ```
 
-- `src/hotel_reception/store.cljc` — `Store` protocol + `MemStore`:
+- `src/hotel_reception/store.cljk` — `Store` protocol + `MemStore`:
   registered reservations, committed records, an append-only audit
   ledger.
-- `src/hotel_reception/advisor.cljc` — `Advisor` protocol;
+- `src/hotel_reception/advisor.cljk` — `Advisor` protocol;
   `mock-advisor` (deterministic, default) proposes a reception
   operation from a request; `llm-advisor` wraps a
   `langchain.model/ChatModel` — either way the advisor only ever
   produces a `:propose`-effect proposal, never a committed record, and
   LLM parse failures always yield `confidence 0.0` (forces escalation,
   never fabricated confidence).
-- `src/hotel_reception/governor.cljc` — `HotelReceptionGovernor/check`:
+- `src/hotel_reception/governor.cljk` — `HotelReceptionGovernor/check`:
   a pure function, wired as its own `:govern` node. Hard invariants
   (unregistered reservation, a proposal whose `:effect` isn't
   `:propose`) always route to `:hold`. Escalation invariants
@@ -83,7 +83,7 @@ human-in-the-loop interrupt/resume via checkpointing.
   robotics-premise statement that disclosing a guest's stay
   information and overriding a reservation-security check always
   require human sign-off.
-- `src/hotel_reception/actor.cljc` — `build-graph`, `run-request!`,
+- `src/hotel_reception/actor.cljk` — `build-graph`, `run-request!`,
   `approve!`: the `langgraph.graph/state-graph` wiring itself.
 
 ```bash
