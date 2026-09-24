@@ -1,0 +1,31 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; README "Robotics premise": a check-in-assist robot performs luggage
+;; handling and key-card dispensing (ISCO 4224). Its physical work is lifting
+;; suitcases onto the luggage cart, and pushing the loaded cart across the
+;; lobby carpet to the lift.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-4224"
+ :cases
+ [{:id :suitcase-onto-cart
+   :kind :manipulator
+   :procedure "arm lifts a guest's suitcase from the lobby floor level onto the upper deck of the luggage cart"
+   :params {:l1-m 0.60 :l2-m 0.55 :m1-kg 8.0 :m2-kg 6.0
+            :from [0.70 0.10] :to [0.30 0.80] :duration-s 3.0 :steps 600}
+   :sweep {:param :payload-kg :values [5.0 10.0 15.0 23.0 32.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 150.0 :basis "estimate: continuous shoulder torque of a ~10 kg-class collaborative arm"}
+   :boundary {:lo 0.5 :hi 60.0}}
+  {:id :luggage-cart-across-lobby
+   :kind :transport
+   :procedure "robot pushes the loaded luggage cart across the lobby carpet from the entrance to the guest lift"
+   :params {:mass-kg 70.0 :distance-m 40.0 :v-max-mps 1.0 :a-max-mps2 0.5
+            :brake-decel-mps2 0.8 :drive-force-n 120.0 :crr 0.03
+            :cog-height-m 0.70 :support-half-length-m 0.35}
+   :sweep {:param :payload-kg :values [20.0 60.0 120.0 200.0 300.0]}
+   :quantity :cycle-time-s
+   :limit {:max 60.0 :basis "estimate: the guest walks the same 40 m in well under a minute; the cart should not lag behind them"}
+   :boundary {:lo 1.0 :hi 330.0}}]}
