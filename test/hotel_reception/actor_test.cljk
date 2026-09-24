@@ -1,5 +1,5 @@
 (ns hotel-reception.actor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [hotel-reception.actor :as actor]
             [hotel-reception.store :as store]))
 

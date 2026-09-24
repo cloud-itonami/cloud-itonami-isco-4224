@@ -1,5 +1,5 @@
 (ns hotel-reception.governor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [hotel-reception.store :as store]
             [hotel-reception.governor :as governor]))
 
